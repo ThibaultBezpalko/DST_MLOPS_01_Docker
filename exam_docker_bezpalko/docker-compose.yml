@@ -1,0 +1,46 @@
+version: "3.9"
+services:
+  api:
+    image: datascientest/fastapi:1.0.0
+    container_name: api
+    networks:
+      network:
+        ipv4_address: 172.51.0.2  # Assign a specific IP address to the api service
+    ports:
+      - "8000:8000"
+  authentication:
+    image: image_authentication:latest
+    container_name: authentication
+    depends_on:
+      - api
+    networks:
+      - network
+    volumes:
+      - volume:/api
+  authorization:
+    image: image_authorization:latest
+    container_name: authorization
+    depends_on:
+      - authentication
+    networks:
+      - network
+    volumes:
+      - volume:/api
+  content:
+    image: image_content:latest
+    container_name: content
+    depends_on:
+      - authorization
+    networks:
+      - network
+    volumes:
+      - volume:/api
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.51.0.0/16
+          gateway: 172.51.0.1
+volumes:
+  volume:

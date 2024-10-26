@@ -1,0 +1,196 @@
+
+============================
+    Authentication test
+============================
+
+datetime = 2024-10-03 20:44:30.172549
+
+request done at "/permissions"
+| username="alice"
+| password="wonderland"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+    Authentication test
+============================
+
+datetime = 2024-10-03 20:44:30.179381
+
+request done at "/permissions"
+| username="bob"
+| password="builder"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+    Authentication test
+============================
+
+datetime = 2024-10-03 20:44:30.187928
+
+request done at "/permissions"
+| username="clementine"
+| password="mandarine"
+
+expected result = 200
+actual result = 403
+
+==>  FAILURE
+
+
+============================
+    Authorization test
+============================
+
+datetime = 2024-10-03 20:44:31.618028
+
+request done at "/v1/sentiment"
+| username="alice"
+| password="wonderland"
+| sentence="It's a wonderful world"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+    Authorization test
+============================
+
+datetime = 2024-10-03 20:44:31.648071
+
+request done at "/v2/sentiment"
+| username="alice"
+| password="wonderland"
+| sentence="It's a wonderful world"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+    Authorization test
+============================
+
+datetime = 2024-10-03 20:44:31.654479
+
+request done at "/v1/sentiment"
+| username="bob"
+| password="builder"
+| sentence="It's a wonderful world"
+
+expected result = 200
+actual result = 200
+
+==>  SUCCESS
+
+
+============================
+    Authorization test
+============================
+
+datetime = 2024-10-03 20:44:31.663615
+
+request done at "/v2/sentiment"
+| username="bob"
+| password="builder"
+| sentence="It's a wonderful world"
+
+expected result = 200
+actual result = 403
+
+==>  FAILURE
+
+
+============================
+    Content test
+============================
+
+datetime = 2024-10-03 20:44:33.092321
+
+request done at "/v1/sentiment"
+| username="alice"
+| password="wonderland"
+| sentence="life is beautiful"
+
+expected status code = 200
+actual status code = 200
+
+expected sign = +
+actual result = +
+
+==>  SUCCESS
+
+
+============================
+    Content test
+============================
+
+datetime = 2024-10-03 20:44:33.100211
+
+request done at "/v1/sentiment"
+| username="alice"
+| password="wonderland"
+| sentence="that sucks"
+
+expected status code = 200
+actual status code = 200
+
+expected sign = -
+actual result = -
+
+==>  SUCCESS
+
+
+============================
+    Content test
+============================
+
+datetime = 2024-10-03 20:44:33.108468
+
+request done at "/v2/sentiment"
+| username="alice"
+| password="wonderland"
+| sentence="life is beautiful"
+
+expected status code = 200
+actual status code = 200
+
+expected sign = +
+actual result = +
+
+==>  SUCCESS
+
+
+============================
+    Content test
+============================
+
+datetime = 2024-10-03 20:44:33.117769
+
+request done at "/v2/sentiment"
+| username="alice"
+| password="wonderland"
+| sentence="that sucks"
+
+expected status code = 200
+actual status code = 200
+
+expected sign = -
+actual result = -
+
+==>  SUCCESS
+

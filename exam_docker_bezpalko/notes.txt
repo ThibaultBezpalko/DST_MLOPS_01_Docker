@@ -1,0 +1,36 @@
+Bonjour.
+
+Architecture de mes dossiers à respecter pour que les scripts soient fonctionnels : 
+home/ubuntu/
+    DST_MLOPS
+        01_Docker
+            exam_docker_bezpalko
+                docker_image_authentication
+                    Dockerfile
+                    test_authentication.py
+                docker_image_authorization
+                    Dockerfile
+                    test_authorization.py
+                docker_image_content
+                    Dockerfile
+                    test_content.py
+                docker-compose.yml
+                notes.txt
+                (api-test.log)
+                setup_start.sh
+                setup_end.sh
+    
+Notes - setup.sh
+Un fichier setup_start.sh pour lancer la construction des images et le déploiement des containers
+Un fichier setup_end.sh pour récupérer le fichier de log et stopper/supprimer les containers, images et volume.
+
+Notes - Docker file
+Il apparaît que la commande ADD n'est pas utile lorsqu'on monte un volume depuis le docker compose : ce montage semble prendre le pas sur la commande ADD. 
+J'ai donc déposé les 3 fichiers python dans ce volume avant de lancer docker compose, d'où les commandes cp depuis mes dossiers docker_image.
+
+Notes - docker-compose.yml
+J'ai laissé l'addresse IP fixe car au début j'utilisais l'adresse IP pour router les appels à l'API.
+Sauf que celle-ci changeait...
+J'ai ensuite plutôt utiliser le nom du container. 
+
+
