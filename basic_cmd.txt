@@ -1,0 +1,11 @@
+# find the process listening on a specific port (then kill <PID> if necessary)
+sudo lsof -i :8002
+
+# Retrieve the IP adress of the container
+docker container inspect <name> | grep IPAddress
+
+# Launch a docker container with -it option and with bash to be able to interact with it
+docker container run -it --rm --name api_man -p 8000:8000 api_man:latest bash
+
+# Kill the container and remove elements
+docker-compose down --remove-orphans
